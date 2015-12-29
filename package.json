@@ -4,8 +4,8 @@
   "description": "",
   "main": "./src/js/main.js",
   "scripts": {
-		"prod": "webpack; ./node_modules/http-server/bin/http-server ./bin",
-    "dev": "webpack-dev-server",
+		"prod": "./node_modules/webpack/bin/webpack.js; ./node_modules/http-server/bin/http-server ./bin",
+    "dev": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "mavu",
