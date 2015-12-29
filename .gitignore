@@ -1,5 +1,6 @@
 /node_modules/
 bin/*
+!bin/data.json
 !bin/index.html
 
 *.log

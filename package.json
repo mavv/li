@@ -4,7 +4,7 @@
   "description": "",
   "main": "./src/js/main.js",
   "scripts": {
-		"prod": "./node_modules/webpack/bin/webpack.js; ./node_modules/http-server/bin/http-server ./bin",
+    "prod": "./node_modules/webpack/bin/webpack.js; ./node_modules/http-server/bin/http-server ./bin",
     "dev": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -36,6 +36,7 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.3.14",
-    "babel-runtime": "^6.3.19"
+    "babel-runtime": "^6.3.19",
+    "whatwg-fetch": "^0.10.1"
   }
 }

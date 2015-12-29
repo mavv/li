@@ -16,7 +16,8 @@ module.exports = {
 	target: 'web',
 	debug: true,
 	cache: true,
-	devtool: 'eval',
+	// devtool: 'eval',
+	devtool: 'source-map',
 	// watch: true,
 	devServer: {
 		hot: true,

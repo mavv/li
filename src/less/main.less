@@ -125,6 +125,8 @@ section {
 
 
 		section {
+			width: 80%;
+			margin: 0 auto;
 			display: flex;
 			flex-flow: column wrap;
 			// align-items: flex-start;
@@ -160,6 +162,18 @@ section {
 					// border-radius: 3px;
 				}
 			}
+			aside {
+				font-size: 14px;
+				line-height: 18px;
+				ul {
+					li {
+						a {
+							// text-decoration: none;
+							color:black;
+						}
+					}
+				}
+			}
 		}
 	}
 }
@@ -174,7 +188,7 @@ input#search {
 		border: 0 none;
 	}
 }
-/* ----------- Non-Retina Screens ----------- */
+
 @media screen
   and (min-device-width: 1200px)
   and (-webkit-min-device-pixel-ratio: 1) {
@@ -183,7 +197,7 @@ input#search {
 				width: 60%;
 				>section {
 					width: 100%;
-					
+
 				}
 			}
 		}

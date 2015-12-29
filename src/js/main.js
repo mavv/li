@@ -20,7 +20,7 @@ requestAnimationFrame(() => {
 		})
 		.then((response) => response.json())
 		.then((data) => {
-
+			console.log(data);
 			const list = new StoryExpandedList(data.results);
 
 			list.render(ordered, 'list');
@@ -79,7 +79,7 @@ requestAnimationFrame(() => {
 			});
 
 			oldNew.addEventListener('click', (evt) =>{
-				console.log(evt);
+				// console.log(evt);
 				const button = document.getElementById('oldNew');
 				list.destroy('list');
 				if (ordered === 'asc') {
@@ -91,7 +91,7 @@ requestAnimationFrame(() => {
 					ordered = 'asc';
 					button.innerHTML = 'new => old';
 				}
-			})
+			});
 
 		})
 		.catch((reason) => {

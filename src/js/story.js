@@ -9,6 +9,14 @@ class Story {
 	}
 }
 
+class RelatedStory extends Story {
+	constructor (item) {
+		super(item);
+		this.unescapedUrl = item.unescapedUrl;
+		this.url = item.url;
+	}
+}
+
 class StoryExpanded extends Story {
 	constructor (item) {
 		super(item);
@@ -16,9 +24,13 @@ class StoryExpanded extends Story {
 		this.content = item.content;
 		this.url = item.url;
 		this.unescapedUrl = item.unescapedUrl;
-		const rel = item.relatedStories;
-		// console.log(rel);
-		// this.relatedStories = new RelatedStoriesList(item.relatedStories);
+
+		this.relatedStories = new Array();
+		if (item.relatedStories !== undefined && item.relatedStories.length) {
+			for (const rel of item.relatedStories) {
+				this.relatedStories.push(new RelatedStory(rel));
+			}
+		}
 	}
 
 }
@@ -27,22 +39,20 @@ export class StoryExpandedList {
 	constructor (items) {
 		this.items = new Array();
 		for (const el of items) {
-
 			this.items.push(new StoryExpanded(el));
 		}
 	}
 
 	destroy(id) {
-
-		 let root = document.getElementById(id);
+		const root = document.getElementById(id);
 		while (root.children.length > 0) {
 			root.removeChild(root.lastChild);
 		}
 	}
 
 	render (order = 'asc', id) {
-		let root = document.getElementById(id);
-		console.log(order);
+		const root = document.getElementById(id);
+		// console.log(order);
 		this.items.sort((a, b) => {
 			return order === 'asc' ?
 							a.publishedDate - b.publishedDate :
@@ -50,7 +60,20 @@ export class StoryExpandedList {
 		});
 		let domString = ``;
 		for (const el of this.items) {
-
+			let domRels = `<ul>`;
+			console.log(el.relatedStories);
+			if (el.relatedStories.length > 0) {
+				for (const e of el.relatedStories) {
+					domRels += `<li>
+						<a href="${e.url}">${e.title}<a>
+					</li>`;
+				}
+			}
+			domRels += `</ul>`;
+			// for (const rel of this.relatedStories) {
+			// 	// domRels = rel.
+			// 	console.log(rel);
+			// }
 			domString += `<article id="a${this.items.indexOf(el)}">
 					<header onClick="toggle(${this.items.indexOf(el)})" class="trigger" id="h${this.items.indexOf(el)}">
 						<div id="hi${this.items.indexOf(el)}">
@@ -68,6 +91,9 @@ export class StoryExpandedList {
 							<img src="${el.image.url}"/>
 							<p>${el.content}<a class="more" href="${el.unescapedUrl}">Read more</a></p>
 						</div>
+						<aside>
+							${domRels}
+						</aside>
 					</section>
 				</article>
 				`;
