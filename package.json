@@ -4,15 +4,13 @@
   "description": "",
   "main": "./src/js/main.js",
   "scripts": {
-    "build": "webpack",
+		"prod": "webpack; ./node_modules/http-server/bin/http-server ./bin",
     "dev": "webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-
-	"author": "mavu",
-	"author": "mavu",
-  "license": "MIT",
-	"repository": {
+  "author": "mavu",
+  "license": "ISC",
+  "repository": {
     "type": "git",
     "url": "git+https://github.com/mavv/li.git"
   },
@@ -20,7 +18,6 @@
     "url": "https://github.com/mavv/li/issues"
   },
   "homepage": "https://github.com/li/li#readme",
-  "license": "ISC",
   "devDependencies": {
     "autoprefixer-loader": "^3.1.0",
     "babel-core": "^6.3.21",
@@ -29,6 +26,7 @@
     "babel-preset-es2015": "^6.3.13",
     "css-loader": "^0.23.1",
     "eslint": "^1.10.3",
+    "http-server": "^0.8.5",
     "less": "^2.5.3",
     "less-loader": "^2.2.2",
     "static-loader": "^0.1.8",

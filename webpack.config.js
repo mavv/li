@@ -17,7 +17,7 @@ module.exports = {
 	debug: true,
 	cache: true,
 	devtool: 'eval',
-	watch: true,
+	// watch: true,
 	devServer: {
 		hot: true,
 		inline: true,

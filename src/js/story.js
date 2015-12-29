@@ -32,32 +32,48 @@ export class StoryExpandedList {
 		}
 	}
 
-	render (id) {
-		const root = document.getElementById(id);
+	destroy(id) {
 
+		 let root = document.getElementById(id);
+		while (root.children.length > 0) {
+			root.removeChild(root.lastChild);
+		}
+	}
+
+	render (order = 'asc', id) {
+		let root = document.getElementById(id);
+		console.log(order);
+		this.items.sort((a, b) => {
+			return order === 'asc' ?
+							a.publishedDate - b.publishedDate :
+							b.publishedDate - a.publishedDate;
+		});
+		let domString = ``;
 		for (const el of this.items) {
 
-			root.innerHTML += `<article id="a${this.items.indexOf(el)}">
+			domString += `<article id="a${this.items.indexOf(el)}">
 					<header onClick="toggle(${this.items.indexOf(el)})" class="trigger" id="h${this.items.indexOf(el)}">
-						<div>
+						<div id="hi${this.items.indexOf(el)}">
 							<img src="${el.image.tbUrl}"/>
 						</div>
 						<div>
-							<span id="sp${this.items.indexOf(el)}">${el.title}</span>
+							<span id="sp${this.items.indexOf(el)}">${el.title}, </span>
+							<span>${el.publishedDate}, </span>
+							<span>${el.publisher}</span>
+
 						</div>
 					</header>
 					<section class="collapsable" id="s${this.items.indexOf(el)}">
 						<div>
 							<img src="${el.image.url}"/>
-						</div>
-						<div>
-							<p>${el.content}<a href="${el.unescapedUrl}">Read more</a></p>
+							<p>${el.content}<a class="more" href="${el.unescapedUrl}">Read more</a></p>
 						</div>
 					</section>
 				</article>
 				`;
 
 		}
+		root.innerHTML= domString;
 		return root.childNodes[0];
 	}
 
