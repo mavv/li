@@ -1,6 +1,6 @@
 import Image from './image';
 
-export class Story {
+class Story {
 	constructor (item) {
 		this.title = item.title;
 		this.titleNoFormatting = item.titleNoFormatting;
@@ -9,7 +9,7 @@ export class Story {
 	}
 }
 
-export class StoryExpanded extends Story {
+class StoryExpanded extends Story {
 	constructor (item) {
 		super(item);
 		this.image = new Image(item.image);
@@ -17,9 +17,10 @@ export class StoryExpanded extends Story {
 		this.url = item.url;
 		this.unescapedUrl = item.unescapedUrl;
 		const rel = item.relatedStories;
-		console.log(rel);
+		// console.log(rel);
 		// this.relatedStories = new RelatedStoriesList(item.relatedStories);
 	}
+
 }
 
 export class StoryExpandedList {

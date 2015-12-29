@@ -17,10 +17,8 @@ requestAnimationFrame(() => {
 		})
 		.then((response) => response.json())
 		.then((data) => {
-
 			const list = new StoryExpandedList(data.results);
 			list.render('list');
-
 
 			window.toggle = (e) => {
 				if (openned === undefined) {
@@ -39,28 +37,25 @@ requestAnimationFrame(() => {
 			};
 
 			search.addEventListener('keyup', (evt) => {
-				// console.log(evt.target.value, evt.target.id);
-				const articles = document.querySelectorAll('article[id^=a]');
-				const titles = document.querySelectorAll('span[id^=sp]');
-				// console.log(articles);
-				if (evt.target.value === '') {
-					for(const article of articles) {
-						article.classList.remove('hidden');
-					}
-				} else {
-
-
-					for (const title of titles) {
-						let match = title.innerText.toLowerCase().includes(evt.target.value);
-						if (match === true) {
-							// console.log('matched ? ' + match + ' at' + title.id);
-							// console.log(title.innerText, title.id.substr(2));
-							document.getElementById('a' + title.id.substr(2)).classList.remove('hidden');
+				if (evt.target.value !== '') {
+					(list.items).forEach((el, ind) => {
+						const matchTitle = (title) => {
+							return title.toLowerCase().includes(evt.target.value) ||
+										title.toUpperCase().includes(evt.target.value) ||
+										title.includes(evt.target.value);
+						};
+						const matchContent = (content) => {
+							return content.toLowerCase().includes(evt.target.value) ||
+										content.toUpperCase().includes(evt.target.value) ||
+										content.includes(evt.target.value);
 						}
-						if (match === false) {
-							document.getElementById('a' + title.id.substr(2)).classList.add('hidden');
+						if (matchTitle(el.titleNoFormatting) || matchContent(el.content) === true) {
+							document.getElementById('a' + ind).classList.remove('hidden');
+						} else {
+							document.getElementById('a' + ind).classList.add('hidden');
 						}
-					}
+
+					});
 				}
 
 			});
