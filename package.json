@@ -8,7 +8,18 @@
     "dev": "webpack-dev-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+
 	"author": "mavu",
+	"author": "mavu",
+  "license": "MIT",
+	"repository": {
+    "type": "git",
+    "url": "git+https://github.com/mavv/li.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mavv/li/issues"
+  },
+  "homepage": "https://github.com/li/li#readme",
   "license": "ISC",
   "devDependencies": {
     "autoprefixer-loader": "^3.1.0",

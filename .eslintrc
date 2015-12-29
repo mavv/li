@@ -1,29 +1,40 @@
 {
   "rules": {
-  "indent": [
-    2,
-    "tab"
-  ],
-  "quotes": [
-    2,
-    "single"
-  ],
-  "linebreak-style": [
-    2,
-    "unix"
-  ],
-  "semi": [
-    2,
-    "always"
-  ]
+	  "indent": [
+	    2,
+	    "tab"
+	  ],
+	  "quotes": [
+	    2,
+	    "single"
+	  ],
+	  "linebreak-style": [
+	    2,
+	    "unix"
+	  ],
+	  "semi": [
+	    2,
+	    "always"
+	  ],
+		"no-unused-vars": [
+			2,
+			{"vars": "local", "args": "after-used"}
+		],
+		"prefer-const": [
+			2
+		]
   },
 	"no-restricted-imports": [2,
 		"babel-polyfill"
 	],
+	"no-redeclare": [2, {"builtinGlobals": true}],
   "env": {
-  "es6": true,
-  "node": true,
-	"browser": true
+	  "es6": true,
+	  "node": true,
+		"browser": true
   },
+	"ecmaFeatures": {
+		modules: true
+	},
   "extends": "eslint:recommended"
 }

@@ -4,10 +4,10 @@ var webpack = require('webpack');
 
 module.exports = {
 	entry: [
-		'webpack-dev-server/client?http://localhost:8080',
-		// './src/less/main.less',
+		'./src/less/main',
 		// 'babel-polyfill',
-		'./src/js/main'
+		'./src/js/main',
+		'webpack-dev-server/client?http://localhost:8080'
 	],
 	output: {
 		path: 'bin',
@@ -16,7 +16,7 @@ module.exports = {
 	target: 'web',
 	debug: true,
 	cache: true,
-	devtool: 'eval-source-map',
+	devtool: 'eval',
 	watch: true,
 	devServer: {
 		hot: true,
